@@ -1,4 +1,5 @@
 import thinks
+import before_and_after_file_range_csv_list
 # 心拍計測定開始位置から行動計装着開始時間を求める関数
 def start_active_counter_row(csv_data):
   not_use = 0
@@ -39,3 +40,24 @@ def finish_active_counter_row(csv_data):
     else:
       row_count = row_count + 1
   return finish_active_count_row
+
+# 心拍計測定位置など関係なく行動計装着時間を求める関数
+def full_start_active_counter_row(csv_data):
+  for row in range(len(csv_data)):
+    if float(csv_data[row][1]) != 0:
+     start_row = row
+     break
+    else:
+      continue
+  
+  return start_row
+
+def full_finish_active_counter_row(csv_data):
+  last_row = len(csv_data) - 1
+  for row in range(1444):
+    if float(csv_data[last_row][1]) != 0:
+      answer = last_row
+      break
+    else:
+      last_row = last_row - 1
+  return answer    
