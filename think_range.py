@@ -61,3 +61,19 @@ def full_finish_active_counter_row(csv_data):
     else:
       last_row = last_row - 1
   return answer    
+
+def before_csv_data_split(csv_data):
+  for row in range(len(csv_data)):
+    if csv_data[row][0] == '04:01:00':
+      answer = row - 1
+      break 
+  if answer == -1:
+    answer = 0 
+  return answer      
+
+def after_csv_data_split(csv_data):
+  for row in range(len(csv_data)):
+    if csv_data[row][0] == '23:59:00':
+      answer = row
+  return answer
+  
