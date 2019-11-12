@@ -15,7 +15,6 @@ def return_heart_counter_finish_row(csv_data_list):
     except:
       heart_counter_finish_row = row
       break
-
   return heart_counter_finish_row
   
 # 1  

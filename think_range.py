@@ -33,7 +33,6 @@ def finish_active_counter_row(csv_data):
   
   row_count = row_count_backup
   for row in range(40):
-    print(row_count)
     if float(csv_data[row_count][1]) != 0:
       finish_active_count_row = row_count
       row_count = row_count + 1
