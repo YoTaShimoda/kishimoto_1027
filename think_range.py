@@ -4,15 +4,16 @@ import before_and_after_file_range_csv_list
 def start_active_counter_row(csv_data):
   not_use = 0
   heart_start_row = thinks.return_heart_counter_start_row(csv_data)
-
   active_start_row = 0
   row_count = thinks.return_heart_counter_start_row([csv_data])
-  for row in range(20):
-    if float(csv_data[row_count][1]) != 0:
-      active_start_row = row_count
-    else:
-       row_count = row_count - 1
-    
+
+  if row_count != 0:
+    for row in range(20):
+      if float(csv_data[row_count][1]) != 0:
+        active_start_row = row_count
+      else:
+        row_count = row_count 
+  
   if active_start_row == 0:
     for row in range(heart_start_row, heart_start_row + 40): 
       if float(csv_data[row][1]) != 0:
@@ -21,24 +22,46 @@ def start_active_counter_row(csv_data):
   return active_start_row
 
 def finish_active_counter_row(csv_data):
-  row_count = thinks.return_heart_counter_finish_row(csv_data) 
+  row_count = thinks.return_heart_counter_finish_row(csv_data)
+  if row_count <0:
+    row_count = 0 
+  else:
+    row_count = row_count - 1
+
   row_count_backup = row_count
   finish_active_count_row = 0
   for row in range(40):
-    if float(csv_data[row_count][1]) != 0:
-      finish_active_count_row = row_count
+    try:
+      if float(csv_data[row_count][1]) != 0:
+        finish_active_count_row = row_count
+        row_count = row_count + 1
+      else:
+        row_count = row_count + 1
+    except:
       break
-    else:
-      row_count = row_count - 1 
-  
-  row_count = row_count_backup
-  for row in range(40):
-    if float(csv_data[row_count][1]) != 0:
-      finish_active_count_row = row_count
-      row_count = row_count + 1
-    else:
-      row_count = row_count + 1
+
+  if finish_active_count_row == 0: 
+    row_count = row_count_backup
+    for row in range(40):
+      if float(csv_data[row_count][1]) != 0:
+        finish_active_count_row = row_count
+        break
+      else:
+        row_count = row_count - 1 
+
+  # print(csv_data[finish_active_count_row])
   return finish_active_count_row
+
+
+
+
+
+
+
+
+
+
+
 
 # 心拍計測定位置など関係なく行動計装着時間を求める関数
 def full_start_active_counter_row(csv_data):

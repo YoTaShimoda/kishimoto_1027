@@ -2,35 +2,40 @@ import before_and_after_file_range_csv_list
 import think_range
 import thinks
 import pprint
+import datetime
+import csv
+import return_file_path
 
 numfour_list = before_and_after_file_range_csv_list.numfour_before_and_after_file_range_csv_list()
 numfive_list = before_and_after_file_range_csv_list.numfive_before_and_after_file_range_csv_list()
 answer = []
+numfour_file_path = return_file_path.numfour_before_and_after_file()
 
+count = 0
 for data_list in numfour_list:
    before_data_finish_row = think_range.before_csv_data_split(data_list)
    before_data = data_list[:before_data_finish_row] 
    after_data_finish_row = think_range.after_csv_data_split(data_list)
    after_data = data_list[before_data_finish_row : after_data_finish_row + 1]
-
-   before_active_count_start_row = 0
-   before_active_count_finish_row = 0
-   after_active_count_finish_row = 0
-   after_active_count_start_row = 0
-   
-   # 行動計の範囲を変える時はここを変える
+#    # 行動計の範囲を変える時はここを変える
    try:   
       before_active_count_start_row = think_range.start_active_counter_row(before_data)
-      before_active_count_finish_row = think_range.finish_active_counter_row(before_data)
    except:
       before_active_count_start_row = 0
-      before_active_count_finish_row = 0
    try:
-      after_active_count_start_row = think_range.start_active_counter_row(after_data)
-      after_active_count_finish_row = think_range.finish_active_counter_row(after_data)
+      before_active_count_finish_row = think_range.finish_active_counter_row(before_data)
    except:
-      after_active_count_start_row = 0
-      after_active_count_finish_row = 0 
+      before_active_count_finish_row = 0
+
+   after_active_count_start_row = think_range.start_active_counter_row(after_data)
+
+   after_active_count_finish_row = think_range.finish_active_counter_row(after_data)
+
+   print(numfour_file_path[count])
+   # print(before_active_count_start_row)
+   # print(before_active_count_finish_row)
+   # print(after_active_count_start_row)
+   # print(after_active_count_finish_row)
 
    # 1
    try:
@@ -226,20 +231,16 @@ for data_list in numfour_list:
     walk_type_active_counter, not_active_counter, life_type_both_counter_suit_count, walk_type_both_counter_suit_count, 
     not_active_both_counter_suit_count, both_suit_count_mets_average, both_suit_heart_average, life_type_heart_average, walk_type_heart_average, 
     life_type_mets_average, walk_type_mets_average, average_heart_count_for_not_active, total_active_count, both_counter_suit_total_active_count]
-   
+
+   count+=1
    answer.append(numfour_answer)
-   
+
 for data_list in numfive_list:
    before_data_finish_row = think_range.before_csv_data_split(data_list)
    before_data = data_list[:before_data_finish_row] 
    after_data_finish_row = think_range.after_csv_data_split(data_list)
    after_data = data_list[before_data_finish_row : after_data_finish_row + 1]
 
-   before_active_count_start_row = 0
-   before_active_count_finish_row = 0
-   after_active_count_finish_row = 0
-   after_active_count_start_row = 0
-   
    # 行動計の範囲を変える時はここを変える
    try:   
       before_active_count_start_row = think_range.start_active_counter_row(before_data)
@@ -450,5 +451,5 @@ for data_list in numfive_list:
     life_type_mets_average, walk_type_mets_average, average_heart_count_for_not_active, total_active_count, both_counter_suit_total_active_count]
    
    answer.append(numfive_answer)
-   
-pprint.pprint(answer)
+
+print(answer)
