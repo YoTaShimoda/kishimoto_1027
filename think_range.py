@@ -51,17 +51,6 @@ def finish_active_counter_row(csv_data):
 
   return finish_active_count_row
 
-
-
-
-
-
-
-
-
-
-
-
 # 心拍計測定位置など関係なく行動計装着時間を求める関数
 def full_start_active_counter_row(csv_data):
   for row in range(len(csv_data)):
