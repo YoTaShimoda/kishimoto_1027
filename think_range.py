@@ -49,7 +49,6 @@ def finish_active_counter_row(csv_data):
       else:
         row_count = row_count - 1 
 
-  # print(csv_data[finish_active_count_row])
   return finish_active_count_row
 
 

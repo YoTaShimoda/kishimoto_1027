@@ -235,6 +235,8 @@ for data_list in numfour_list:
       answer_list.append(value[1])
    count += 1
    answer.append(answer_list)
+
+   # break
 with open('answer/no4_answer.csv', 'w', newline='') as f:
    writer = csv.writer(f)
    for row in answer:
@@ -260,12 +262,6 @@ for data_list in numfive_list:
    after_active_count_start_row = think_range.start_active_counter_row(after_data)
 
    after_active_count_finish_row = think_range.finish_active_counter_row(after_data)
-
-   # print(numfive_file_path[count])
-   # print(before_active_count_start_row)
-   # print(before_active_count_finish_row)
-   # print(after_active_count_start_row)
-   # print(after_active_count_finish_row)
 
    # 1
    try:
@@ -470,6 +466,7 @@ for data_list in numfive_list:
    count += 1
    answer.append(answer_list)
 
+   # break
 with open('answer/no5_answer.csv', 'w', newline='') as f:
    writer = csv.writer(f)
    for row in answer:

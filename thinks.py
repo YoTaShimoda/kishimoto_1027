@@ -42,7 +42,10 @@ def return_heart_counter_suit_time(csv_data_list):
   return heart_counter_suit_time   
 # 2
 def return_active_counter_suit_time(start_row, finish_row):
-  active_counter_suit_time = finish_row - start_row -1
+  if finish_row == 0:
+    active_counter_suit_time = 0
+  else:
+    active_counter_suit_time = finish_row - start_row -1
   return active_counter_suit_time
 
 # 3
