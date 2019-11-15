@@ -36,14 +36,13 @@ def return_heart_counter_suit_time(csv_data_list):
     try:
       heart_counter_start_row = csv_data_list[row][3]
       heart_counter_suit_time += 1
-      break
     except:
       continue
 
   return heart_counter_suit_time   
 # 2
 def return_active_counter_suit_time(start_row, finish_row):
-  active_counter_suit_time = finish_row - start_row + 1
+  active_counter_suit_time = finish_row - start_row -1
   return active_counter_suit_time
 
 # 3
@@ -76,6 +75,7 @@ def active_type_count_for_both_counter_suit(csv_data_list, start_row, finish_row
 def average_mets_count(csv_data_list, start_row, finish_row):      
   both_suit_start_row = max(return_heart_counter_start_row(csv_data_list), start_row)
   both_suit_finish_row = min(return_heart_counter_finish_row(csv_data_list), finish_row)
+  # print(finish_row)
   average_mets = 0  
   row_count = 0
   for row in range(both_suit_start_row, both_suit_finish_row):
@@ -89,8 +89,6 @@ def average_mets_count(csv_data_list, start_row, finish_row):
 def average_heart_count(csv_data_list, start_row, finish_row):
   both_suit_start_row = max(return_heart_counter_start_row(csv_data_list), start_row)
   both_suit_finish_row = min(return_heart_counter_finish_row(csv_data_list), finish_row)
-  print(both_suit_start_row)
-  print(both_suit_finish_row)
   average_heart_count = 0
   row_count = 0
   for row in range(both_suit_start_row, both_suit_finish_row):
