@@ -44,7 +44,6 @@ for data_list in numfour_list:
       before_acitve_count_suit_time = thinks.return_active_counter_suit_time(before_active_count_start_row, before_active_count_finish_row)  
    except:
       before_acitve_count_suit_time = 0
-      
    after_active_count_suit_time = thinks.return_active_counter_suit_time(after_active_count_start_row, after_active_count_finish_row)
    active_counter_suit_time = before_acitve_count_suit_time + after_active_count_suit_time 
    
@@ -236,7 +235,6 @@ for data_list in numfour_list:
    count += 1
    answer.append(answer_list)
 
-   # break
 with open('answer/no4_answer.csv', 'w', newline='') as f:
    writer = csv.writer(f)
    for row in answer:
@@ -277,7 +275,6 @@ for data_list in numfive_list:
       before_acitve_count_suit_time = thinks.return_active_counter_suit_time(before_active_count_start_row, before_active_count_finish_row)  
    except:
       before_acitve_count_suit_time = 0
-      
    after_active_count_suit_time = thinks.return_active_counter_suit_time(after_active_count_start_row, after_active_count_finish_row)
    active_counter_suit_time = before_acitve_count_suit_time + after_active_count_suit_time 
    
@@ -466,7 +463,6 @@ for data_list in numfive_list:
    count += 1
    answer.append(answer_list)
 
-   # break
 with open('answer/no5_answer.csv', 'w', newline='') as f:
    writer = csv.writer(f)
    for row in answer:
