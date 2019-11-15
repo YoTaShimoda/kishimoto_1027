@@ -234,7 +234,7 @@ for data_list in numfour_list:
       answer_list.append(value[1])
    count += 1
    answer.append(answer_list)
-
+   
 with open('answer/no4_answer.csv', 'w', newline='') as f:
    writer = csv.writer(f)
    for row in answer:
