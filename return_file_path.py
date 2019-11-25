@@ -19,3 +19,13 @@ def numfive_before_ane_after_file():
   numfive = glob.glob('before_and_after_merge_file/no5/*')
   numfive = sorted(numfive)
   return numfive
+
+def numfour_couple_data():
+  numfour_file_paths = glob.glob('couple_csv_data/no4/*')
+  numfour_file_paths = sorted(numfour_file_paths)
+  return numfour_file_paths
+
+def numfive_couple_data():
+  numfour_file_paths = glob.glob('couple_csv_data/no5/*')
+  numfour_file_paths = sorted(numfour_file_paths)
+  return numfour_file_paths  

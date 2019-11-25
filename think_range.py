@@ -87,3 +87,13 @@ def after_csv_data_split(csv_data):
       answer = row
   return answer
   
+def before_csv_data(csv_data):
+  before_finish_row = before_csv_data_split(csv_data)
+  before_data = csv_data[:before_finish_row] 
+  return before_data
+
+def after_csv_data(csv_data):
+  before_finish_row = before_csv_data_split(csv_data)
+  after_finish_row = after_csv_data_split(csv_data)
+  after_data = csv_data[before_finish_row : after_finish_row + 1]
+  return after_data
