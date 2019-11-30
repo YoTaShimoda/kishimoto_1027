@@ -1,69 +1,68 @@
 import return_file_csv_list
 import return_file_path
 import think_second
+import os
+import csv
 
 for file_path in range(len(return_file_path.numfour_active())):
   numfour_heart_data = return_file_csv_list.heart_data(return_file_path.numfour_heart())
   numfour_active_data = return_file_csv_list.return_file_csv_data_list(return_file_path.numfour_active())
-  numfive_heart_data = return_file_csv_list.heart_data(return_file_path.numfive_heart())
-  numfive_active_data = return_file_csv_list.return_file_csv_data_list(return_file_path.numfive_active())
   count = 0
   answer = []
 
   # 1
-  heart_suit_time = len(think_second.heart_suit_time(num))
+  heart_suit_time = len(think_second.heart_suit_time(numfour_heart_data))
 
   # 2 
-  active_suit_time = len(think_second.active_suit_time(numfour_active_data, numfive_active_data))
+  active_suit_time = len(think_second.active_suit_time(numfour_active_data))
 
   # 3
-  both_suit_time = len(think_second.heart_suit_time(numfour_heart_data, numfive_heart_data), think_second.active_suit_time(numfour_active_data, numfive_active_data))
+  both_suit_time = len(think_second.heart_suit_time(numfour_heart_data), think_second.active_suit_time(numfour_active_data))
 
   # 4
-  life_time_active = think_second.active_type_time(numfour_active_data, numfive_active_data, '生活活動')
+  life_time_active = think_second.active_type_time(numfour_active_data, '生活活動')
 
   # 5
-  walk_time_active = think_second.active_type_time(numfour_active_data, numfive_active_data, '歩行') 
+  walk_time_active = think_second.active_type_time(numfour_active_data, '歩行') 
   
   # 6
-  noactive_time_active = think_second.active_type_time(numfour_active_data, numfive_active_data, '計測なし')
+  noactive_time_active = think_second.active_type_time(numfour_active_data, '計測なし')
 
   # 7
-  both_life = think_second.both_suit_type(numfour_heart_data, numfour_active_data, numfive_active_data, numfive_active_data, '生活活動')
+  both_life = think_second.both_suit_type(numfour_heart_data, numfour_active_data, '生活活動')
 
   # 8
-  both_walk = think_second.both_suit_type(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data, '歩行')
+  both_walk = think_second.both_suit_type(numfour_heart_data, numfour_active_data, '歩行')
 
   # 9 
-  both_no = think_second.both_suit_type(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data, '計測なし')
+  both_no = think_second.both_suit_type(numfour_heart_data, numfour_active_data, '計測なし')
 
   # 10
-  both_met_average = think_second.both_met_average(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data)
+  both_met_average = think_second.both_met_average(numfour_heart_data, numfour_active_data)
 
   # 11
-  both_heart_average = think_second.both_heart_average(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data)
+  both_heart_average = think_second.both_heart_average(numfour_heart_data, numfour_active_data)
 
   # 12
-  both_heart_average_life = think_second.both_heart_average_type(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data, '生活活動')
+  both_heart_average_life = think_second.both_heart_average_type(numfour_heart_data, numfour_active_data, '生活活動')
 
   # 13
-  both_heart_average_walk = think_second.both_heart_average_type(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data, '歩行')
+  both_heart_average_walk = think_second.both_heart_average_type(numfour_heart_data, numfour_active_data, '歩行')
   
   # 14
-  both_met_average_life = think_second.both_met_average_type(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data, '生活活動')
+  both_met_average_life = think_second.both_met_average_type(numfour_heart_data, numfour_active_data, '生活活動')
 
   # 15
-  both_met_average_walk = think_second.both_met_average_type(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data, '歩行')
+  both_met_average_walk = think_second.both_met_average_type(numfour_heart_data, numfour_active_data, '歩行')
   
   # 16
-  not_count_heart_average = think_second.both_heart_average_type(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data, '計測なし')
+  not_count_heart_average = think_second.both_heart_average_type(numfour_heart_data, numfour_active_data, '計測なし')
 
   # 17
-  total_mets = think_second.total_mets(numfour_active_data, numfive_active_data)
+  total_mets = think_second.total_mets(numfour_active_data)
 
   # 18
-  both_total_mets = think_second.both_mets_total(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data)
-  
+  both_total_mets = think_second.both_mets_total(numfour_heart_data, numfour_active_data)
 
   file_name = file_path
   file_name = os.path.basename(file_name)
@@ -78,12 +77,12 @@ for file_path in range(len(return_file_path.numfour_active())):
   count += 1
   answer.append(answer_list)
 
-with open('couple_answer/', 'w', newline='') as f:
+with open('answer_2/no4', 'w', newline='') as f:
    writer = csv.writer(f)
    for row in answer:
       writer.writerow(row)
 
-for file_path in range(len(return_file_path.numfour_active())):
+for file_path in range(len(return_file_path.numfive_active())):
   numfive_heart_data = return_file_csv_list.heart_data(return_file_path.numfive_heart())
   numfive_active_data = return_file_csv_list.return_file_csv_data_list(return_file_path.numfive_active())
   count = 0
@@ -120,28 +119,28 @@ for file_path in range(len(return_file_path.numfour_active())):
   both_met_average = think_second.both_met_average(numfive_heart_data, numfive_active_data)
 
   # 11
-  both_heart_average = think_second.both_heart_average(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data)
+  both_heart_average = think_second.both_heart_average(numfive_heart_data, numfive_active_data)
 
   # 12
-  both_heart_average_life = think_second.both_heart_average_type(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data, '生活活動')
+  both_heart_average_life = think_second.both_heart_average_type(numfive_heart_data, numfive_active_data, '生活活動')
 
   # 13
-  both_heart_average_walk = think_second.both_heart_average_type(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data, '歩行')
+  both_heart_average_walk = think_second.both_heart_average_type(numfive_heart_data, numfive_active_data, '歩行')
   
   # 14
-  both_met_average_life = think_second.both_met_average_type(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data, '生活活動')
+  both_met_average_life = think_second.both_met_average_type(numfive_heart_data, numfive_active_data, '生活活動')
 
   # 15
-  both_met_average_walk = think_second.both_met_average_type(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data, '歩行')
+  both_met_average_walk = think_second.both_met_average_type(numfive_heart_data, numfive_active_data, '歩行')
   
   # 16
-  not_count_heart_average = think_second.both_heart_average_type(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data, '計測なし')
+  not_count_heart_average = think_second.both_heart_average_type(numfive_heart_data, numfive_active_data, '計測なし')
 
   # 17
-  total_mets = think_second.total_mets(numfour_active_data, numfive_active_data)
+  total_mets = think_second.total_mets(numfive_active_data)
 
   # 18
-  both_total_mets = think_second.both_mets_total(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data)
+  both_total_mets = think_second.both_mets_total(numfive_heart_data, numfive_active_data)
   
 
   file_name = file_path
@@ -157,7 +156,7 @@ for file_path in range(len(return_file_path.numfour_active())):
   count += 1
   answer.append(answer_list)
 
-with open('couple_answer/', 'w', newline='') as f:
+with open('answer_2/no5', 'w', newline='') as f:
    writer = csv.writer(f)
    for row in answer:
       writer.writerow(row)

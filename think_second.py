@@ -86,23 +86,20 @@ def both_met_average(heart, active):
   return total/count
 
 # 11
-def both_heart_average(numfour_heart, numfour_active, numfive_heart, numfive_active):
-  heart_suit = heart_suit_time(numfour_heart, numfive_heart)
-  active_suit = active_suit_time(numfour_active, numfive_active)
+def both_heart_average(heart, active):
+  heart_suit = heart_suit_time(heart)
+  active_suit = active_suit_time(active)
   both_suit = both_suit_time(heart_suit, active_suit)
   four_time = []
   five_time = []
   four_data = []
   five_data = []
 
-  for row in numfour_active:
+  for row in active:
     four_time.append(row[0])
-  for row in numfive_active:
-    five_time.append(row[0])
 
   for row in both_suit:
-    four_data.append(numfour_active[four_time.index(row)])
-    five_data.append(numfive_active[five_time.index(row)]) 
+    four_data.append(active[four_time.index(row)])
   
   total = 0
   count = 0
@@ -112,14 +109,83 @@ def both_heart_average(numfour_heart, numfour_active, numfive_heart, numfive_act
       count += 1
     except:
       continue
-  for row in five_data:
-    try:
-      total += float(row[3])
-      count += 1
-    except:
-      continue
+  return total/count
+  
+def both_heart_average_type(heart, active, life_type):
+  heart_suit = heart_suit_time(heart)
+  active_suit = active_suit_time(active)
+  both_suit = both_suit_time(heart_suit, active_suit)
+  four_time = []
+  four_data = []
+
+  for row in active:
+    four_time.append(row[0])
+
+  for row in both_suit:
+    four_data.append(active[four_time.index(row)])
+  
+  total = 0
+  count = 0
+  for row in four_data:
+    if row[2] == life_type:
+      try:
+        total += float(row[3])
+        count += 1
+      except:
+        continue
+    return total/count
+
+def both_met_average_type(heart, active, life_type):
+  heart_suit = heart_suit_time(heart)
+  active_suit = active_suit_time(active)
+  both_suit = both_suit_time(heart_suit, active_suit)
+  four_time = []
+  four_data = []
+
+  for row in active:
+    four_time.append(row[0])
+
+  for row in both_suit:
+    four_data.append(active[four_time.index(row)])
+
+  total = 0
+  count = 0
+  for row in four_data:
+    if row[2] == life_type:
+      if float(row[1]) == 0:
+        continue
+      else:
+        total += float(row[1])
+        count += 1
   return total/count
 
+def total_mets(active):
+  total = 0
+  for row in active:
+    total += float(row[1])
+  return total
+
+def both_mets_total(heart, active):
+  heart_suit = heart_suit_time(heart)
+  active_suit = active_suit_time(active)
+  both_suit = both_suit_time(heart_suit, active_suit)
+  four_time = []
+  four_data = []
+
+  for row in active:
+    four_time.append(row[0])
+
+  for row in both_suit:
+    four_data.append(active[four_time.index(row)])
+  
+  total = 0
+  count = 0
+  for row in four_data:
+    try:
+      total += float(row[3])
+    except:
+      continue
+  return total
 
 
 
@@ -134,3 +200,8 @@ def both_heart_average(numfour_heart, numfour_active, numfive_heart, numfive_act
 # print(len(numfour_active))
 # print(both_suit_type(numfour_heart, numfour_active, '生活活動'))
 # print(both_met_average(numfour_heart, numfour_active))
+# print(both_heart_average(numfour_heart, numfour_active))
+# print(both_heart_average_type(numfour_heart, numfour_active, '生活活動'))
+# print(both_met_average_type(numfour_heart, numfour_active, '生活活動'))
+# print(total_mets(numfour_active))
+# print(both_mets_total(numfour_heart, numfour_active))

@@ -5,10 +5,10 @@ import return_file_csv_list
 import return_file_path
 import pprint
 
-numfour_heart = return_file_csv_list.heart_data(return_file_path.numfour_heart()[1])
-numfour_active = return_file_csv_list.return_file_csv_data_list(return_file_path.numfour_active()[1])
-numfive_heart = return_file_csv_list.heart_data(return_file_path.numfive_heart()[1])
-numfive_active = return_file_csv_list.return_file_csv_data_list(return_file_path.numfive_active()[1])
+# numfour_heart = return_file_csv_list.heart_data(return_file_path.numfour_heart()[1])
+# numfour_active = return_file_csv_list.return_file_csv_data_list(return_file_path.numfour_active()[1])
+# numfive_heart = return_file_csv_list.heart_data(return_file_path.numfive_heart()[1])
+# numfive_active = return_file_csv_list.return_file_csv_data_list(return_file_path.numfive_active()[1])
 
 def change_time(t):
   if t[0] == '0':
@@ -149,6 +149,7 @@ def both_met_average(numfour_heart, numfour_active, numfive_heart, numfive_activ
       count += 1 
   return total/count
 
+# 11 
 def both_heart_average(numfour_heart, numfour_active, numfive_heart, numfive_active):
   heart_suit = heart_suit_time(numfour_heart, numfive_heart)
   active_suit = active_suit_time(numfour_active, numfive_active)
@@ -183,6 +184,7 @@ def both_heart_average(numfour_heart, numfour_active, numfive_heart, numfive_act
       continue
   return total/count
 
+# 12 13 16
 def both_heart_average_type(numfour_heart, numfour_active, numfive_heart, numfive_active, life_type):
   heart_suit = heart_suit_time(numfour_heart, numfive_heart)
   active_suit = active_suit_time(numfour_active, numfive_active)
@@ -219,6 +221,7 @@ def both_heart_average_type(numfour_heart, numfour_active, numfive_heart, numfiv
         continue
     return total/count
 
+# 14 15
 def both_met_average_type(numfour_heart, numfour_active, numfive_heart, numfive_active, life_type):
   heart_suit = heart_suit_time(numfour_heart, numfive_heart)
   active_suit = active_suit_time(numfour_active, numfive_active)
