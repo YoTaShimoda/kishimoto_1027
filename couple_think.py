@@ -12,11 +12,9 @@ import pprint
 
 def change_time(t):
   if t[0] == '0':
-    t = list(t)
-    t = t.pop(0)
-    t = ''.join(t)
+    t= t[1:]
   return t
-
+  
 # 1
 def heart_suit_time(numfour, numfive):
   hako = 0
@@ -28,7 +26,7 @@ def heart_suit_time(numfour, numfive):
       heart_suit_row.append(change_time(numfour[row][0]))
     except:
       continue
-  return heart_suit_row 
+  return set(heart_suit_row) 
 
 # 2
 def active_suit_time(numfour, numfive):
@@ -288,12 +286,12 @@ def both_mets_total(numfour_heart, numfour_active, numfive_heart, numfive_active
   count = 0
   for row in four_data:
     try:
-      total += float(row[3])
+      total += float(row[1])
     except:
       continue
   for row in five_data:
     try:
-      total += float(row[3])
+      total += float(row[1])
     except:
       continue 
   return total

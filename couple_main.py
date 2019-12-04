@@ -80,6 +80,7 @@ for file_path in range(len(return_file_path.numfour_active())):
     answer_list.append(value[1])
   count += 1
   answer.append(answer_list)
+  break
   print(file_name)
 
 with open('couple_answer/' + file_name, 'w', newline='') as f:

@@ -7,9 +7,7 @@ numfour_active = return_file_csv_list.return_file_csv_data_list(return_file_path
 
 def change_time(t):
   if t[0] == '0':
-    t = list(t)
-    t = t.pop(0)
-    t = ''.join(t)
+    t= t[1:]
   return t
 
 # 1
@@ -187,12 +185,11 @@ def both_mets_total(heart, active):
 
   for row in both_suit:
     four_data.append(active[four_time.index(row)])
-  
   total = 0
   count = 0
   for row in four_data:
     try:
-      total += float(row[3])
+      total += float(row[1])
     except:
       continue
   return total
