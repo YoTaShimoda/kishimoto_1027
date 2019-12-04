@@ -4,22 +4,22 @@ import return_file_csv_list
 import os
 import csv
 
+answer = []
 for file_path in range(len(return_file_path.numfour_active())):
-  numfour_heart_data = return_file_csv_list.heart_data(return_file_path.numfour_heart())
-  numfour_active_data = return_file_csv_list.return_file_csv_data_list(return_file_path.numfour_active())
-  numfive_heart_data = return_file_csv_list.heart_data(return_file_path.numfive_heart())
-  numfive_active_data = return_file_csv_list.return_file_csv_data_list(return_file_path.numfive_active())
+  numfour_heart_data = return_file_csv_list.heart_data(return_file_path.numfour_heart()[file_path])
+  numfour_active_data = return_file_csv_list.return_file_csv_data_list(return_file_path.numfour_active()[file_path])
+  numfive_heart_data = return_file_csv_list.heart_data(return_file_path.numfive_heart()[file_path])
+  numfive_active_data = return_file_csv_list.return_file_csv_data_list(return_file_path.numfive_active()[file_path])
   count = 0
-  answer = []
 
   # 1
-  heart_suit_time = len(couple_think.heart_suit_time(numfour_heart_data, numfive_heart_data))
+  heart_suit_time = len(couple_think.heart_suit_time(numfour_heart_data, numfive_heart_data)) - 1
 
   # 2 
   active_suit_time = len(couple_think.active_suit_time(numfour_active_data, numfive_active_data))
 
   # 3
-  both_suit_time = len(couple_think.heart_suit_time(numfour_heart_data, numfive_heart_data), couple_think.active_suit_time(numfour_active_data, numfive_active_data))
+  both_suit_time = len(couple_think.both_suit_time(couple_think.heart_suit_time(numfour_heart_data, numfive_heart_data), couple_think.active_suit_time(numfour_active_data, numfive_active_data)))
 
   # 4
   life_time_active = couple_think.active_type_time(numfour_active_data, numfive_active_data, '生活活動')
@@ -67,6 +67,7 @@ for file_path in range(len(return_file_path.numfour_active())):
   both_total_mets = couple_think.both_mets_total(numfour_heart_data, numfour_active_data, numfive_heart_data, numfive_active_data)
   
 
+  file_path = return_file_path.numfive_heart()[file_path]
   file_name = file_path
   file_name = os.path.basename(file_name)
   numfive_answer = {'a':file_name, 'b':heart_suit_time, 'c':active_suit_time, 'd':both_suit_time, 'e':life_time_active,
@@ -79,8 +80,9 @@ for file_path in range(len(return_file_path.numfour_active())):
     answer_list.append(value[1])
   count += 1
   answer.append(answer_list)
+  print(file_name)
 
-with open('couple_answer/', 'w', newline='') as f:
+with open('couple_answer/' + file_name, 'w', newline='') as f:
    writer = csv.writer(f)
    for row in answer:
       writer.writerow(row)

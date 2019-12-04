@@ -25,10 +25,10 @@ def heart_suit_time(numfour, numfive):
     try:
       hako = numfour[row][3]
       hako = numfive[row][3]
-      heart_suit_row.append(numfour[row][0])
+      heart_suit_row.append(change_time(numfour[row][0]))
     except:
       continue
-  return heart_suit_row
+  return heart_suit_row 
 
 # 2
 def active_suit_time(numfour, numfive):
@@ -102,7 +102,6 @@ def both_suit_type(numfour_heart, numfour_active, numfive_heart, numfive_active,
 
   for row in both_suit:
     row = change_time(row)
-    four_data.append(numfour_active[four_time.index(row)])
     five_data.append(numfive_active[five_time.index(row)])
     
   for row in four_data:
@@ -219,7 +218,7 @@ def both_heart_average_type(numfour_heart, numfour_active, numfive_heart, numfiv
         count += 1
       except:
         continue
-    return total/count
+  return total/count
 
 # 14 15
 def both_met_average_type(numfour_heart, numfour_active, numfive_heart, numfive_active, life_type):

@@ -5,6 +5,13 @@ import couple_think
 numfour_heart = return_file_csv_list.heart_data(return_file_path.numfour_heart()[1])
 numfour_active = return_file_csv_list.return_file_csv_data_list(return_file_path.numfour_active()[1])
 
+def change_time(t):
+  if t[0] == '0':
+    t = list(t)
+    t = t.pop(0)
+    t = ''.join(t)
+  return t
+
 # 1
 def heart_suit_time(num):
   hako = 0
@@ -12,7 +19,7 @@ def heart_suit_time(num):
   for row in range(len(num)):
     try:
       hako = num[row][3]
-      heart_suit_row.append(num[row][0])
+      heart_suit_row.append(change_time(num[row][0]))
     except:
       continue
   return heart_suit_row
@@ -109,7 +116,10 @@ def both_heart_average(heart, active):
       count += 1
     except:
       continue
-  return total/count
+  try:
+    return total/count
+  except:
+    return 0
   
 def both_heart_average_type(heart, active, life_type):
   heart_suit = heart_suit_time(heart)
@@ -133,7 +143,7 @@ def both_heart_average_type(heart, active, life_type):
         count += 1
       except:
         continue
-    return total/count
+  return total/count    
 
 def both_met_average_type(heart, active, life_type):
   heart_suit = heart_suit_time(heart)
@@ -158,7 +168,7 @@ def both_met_average_type(heart, active, life_type):
         total += float(row[1])
         count += 1
   return total/count
-
+    
 def total_mets(active):
   total = 0
   for row in active:
